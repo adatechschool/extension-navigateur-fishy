@@ -3,7 +3,7 @@
   "name": "Search Reduction",
   "version": "1.0",
   "description": "Help you find what you want and buy it at the best price !",
-  "permission": ["scripting", "tabs"],
+  "permissions": ["scripting", "tabs"],
   "action": {
     "default_title": "Click Me",
     "default_popup": "popup.html"
