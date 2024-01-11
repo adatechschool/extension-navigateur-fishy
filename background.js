@@ -1,4 +1,6 @@
-//chrome.history.onVisited.addListener(RNGInit());
+chrome.webNavigation.onCompleted.addListener(function() {
+  RNGInit();
+});
 
 //SCAN RESULT
 
@@ -29,9 +31,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       : "from the extension"
   );
   if (request.greeting === "searchFPage") {
-    sendResponse({ farewell: "initFPage" })
+    sendResponse({ farewell: "initFPage" });
   }
-})
+});
 
 //FPAGE LOADED
 
@@ -42,10 +44,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       : "from the extension"
   );
   if (request.greeting === "searchFPage") {
-    sendResponse({ farewell: "initFPage" })
+    sendResponse({ farewell: "initFPage" });
   }
-})
-
+});
 
 //DATA RECEPTION
 
@@ -64,3 +65,5 @@ const saveData = data => {
   let PTP = data;
   return PTP;
 };
+
+
