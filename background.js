@@ -1,4 +1,4 @@
-chrome.history.onVisited.addListener(RNGInit());
+//chrome.history.onVisited.addListener(RNGInit());
 
 //SCAN RESULT
 
