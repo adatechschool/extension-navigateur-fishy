@@ -3,7 +3,7 @@
   "name": "Search Reduction",
   "version": "1.0",
   "description": "Help you find what you want and buy it at the best price !",
-  "permission": ["scripting", "tabs"],
+  "permissions": ["scripting", "tabs"],
   "action": {
     "default_title": "Click Me",
     "default_popup": "popup.html"
@@ -13,7 +13,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "https://www.amazon.com/*",
+        "https://www.amazon.fr/*",
+        "https://www.lalibrairie.com/livres/*"
+      ],
       "js": ["content_page.js", "content_fakepage.js"]
     }
   ]

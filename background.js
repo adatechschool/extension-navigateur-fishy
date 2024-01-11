@@ -2,7 +2,7 @@ chrome.history.onVisited.addListener(RNGInit());
 
 //SCAN RESULT
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log(
     sender.tab
       ? "from a content script:" + sender.tab.url
@@ -22,34 +22,33 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 //POPUP SEARCH
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log(
     sender.tab
       ? "from a content script:" + sender.tab.url
       : "from the extension"
   );
   if (request.greeting === "searchFPage") {
-    sendResponse({ farewell: "initFPage" })
+    sendResponse({ farewell: "initFPage" });
   }
-})
+});
 
 //FPAGE LOADED
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log(
     sender.tab
       ? "from a content script:" + sender.tab.url
       : "from the extension"
   );
   if (request.greeting === "searchFPage") {
-    sendResponse({ farewell: "initFPage" })
+    sendResponse({ farewell: "initFPage" });
   }
-})
-
+});
 
 //DATA RECEPTION
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "saveToDatabase") {
     saveData(request.data);
   }
@@ -60,7 +59,7 @@ const RNGInit = () => {
 };
 let RNGInitResult = RNGInit();
 
-const saveData = data => {
+const saveData = (data) => {
   let PTP = data;
   return PTP;
 };
