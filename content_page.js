@@ -21,9 +21,15 @@ if (bookTitle && bookImg && bookPrice) {
   };
   console.log("data :", data);
   chrome.runtime.sendMessage({
-    action: "scanPositive",
+    message: "scanPositive",
     data: data,
   });
 } else {
   console.log("no product found on this page");
 }
+
+// chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
+//   if (response.farewell === "RNGinitOK") {
+//     console.log("Trop simple");
+//   }
+// });

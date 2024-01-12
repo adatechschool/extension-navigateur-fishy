@@ -1,6 +1,9 @@
-chrome.history.onVisited.addListener(RNGInit());
+chrome.webNavigation.onCompleted.addListener(function () {
+  RNGInit();
+});
 
 //SCAN RESULT
+let PTP;
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log(
@@ -8,26 +11,31 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       ? "from a content script:" + sender.tab.url
       : "from the extension"
   );
-  if (request.greeting === "scanPositive") {
+  if (request.message === "scanPositive" && request.data) {
     if (RNGInitResult <= 0.7) {
-      sendResponse({ farewell: "RNGinitOK" });
-      saveData(request.data);
-      console.log(saveData(request.data));
-      //send data to popup ***
+      console.log("P.T.P", request.data);
+      PTP = request.data;
     } else {
+      console.log("message receiver but RNG not passed");
       sendResponse({ farewell: "RNGinitBlock" });
     }
+  }
+});
+
+// SEND PTP TO POPUP
+
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.message === "givePTP") {
+    chrome.runtime.sendMessage({
+      message: "sendPTP",
+      data: PTP,
+    });
   }
 });
 
 //POPUP SEARCH
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log(
-    sender.tab
-      ? "from a content script:" + sender.tab.url
-      : "from the extension"
-  );
   if (request.greeting === "searchFPage") {
     sendResponse({ farewell: "initFPage" });
   }
@@ -36,11 +44,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 //FPAGE LOADED
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log(
-    sender.tab
-      ? "from a content script:" + sender.tab.url
-      : "from the extension"
-  );
   if (request.greeting === "searchFPage") {
     sendResponse({ farewell: "initFPage" });
   }
@@ -59,7 +62,7 @@ const RNGInit = () => {
 };
 let RNGInitResult = RNGInit();
 
-const saveData = (data) => {
-  let PTP = data;
-  return PTP;
-};
+// const saveData = (data) => {
+//   let PTP = data;
+//   return PTP
+// };
