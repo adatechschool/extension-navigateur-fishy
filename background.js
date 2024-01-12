@@ -35,11 +35,11 @@ chrome.runtime.onMessage.addListener((request) => {
 
 //POPUP SEARCH
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.greeting === "searchFPage") {
-    sendResponse({ farewell: "initFPage" });
-  }
-});
+// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+//   if (request.greeting === "searchFPage") {
+//     sendResponse({ farewell: "initFPage" });
+//   }
+// });
 
 //FPAGE LOADED
 
@@ -61,8 +61,3 @@ const RNGInit = () => {
   return Math.random();
 };
 let RNGInitResult = RNGInit();
-
-// const saveData = (data) => {
-//   let PTP = data;
-//   return PTP
-// };

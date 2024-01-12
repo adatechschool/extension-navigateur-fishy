@@ -1,9 +1,3 @@
-// // Listen from message from background
-// chrome.runtime.onMessage.addEventListener((message) => {
-// if (message.action === "" && message.);
-// //do things
-// })
-
 // script to search for a book in the current amazon page
 
 let bookTitle = document.getElementsByClassName("a-size-extra-large celwidget");
@@ -27,9 +21,3 @@ if (bookTitle && bookImg && bookPrice) {
 } else {
   console.log("no product found on this page");
 }
-
-// chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
-//   if (response.farewell === "RNGinitOK") {
-//     console.log("Trop simple");
-//   }
-// });
