@@ -27,7 +27,7 @@
             padding: 20px;
             background-color: rgb(229, 192, 255);
             z-index: 1000;
-            font-family: arial black;
+            font-family: arial;
             font-size: 130%;
         }
 
@@ -35,7 +35,7 @@
             margin-left: 20%;
             background-color: rgb(229, 192, 255);
             border: #fff;
-            font-family: arial black ;
+            font-family: arial ;
             font-size: 145%;
             height: 50px;
             width: 60%;
@@ -55,16 +55,26 @@
     </style>
     <body>
         <h1></h1>
+        <div class="overlay" id="overlay1"></div>
         <button class="button" id="search">Rechercher</button>
-        <div class="overlay" id="overlay"></div>
+
+        <div class="overlay" id="overlay2">
+            <title id="title"></title>
+            <price id="price"></price>
+            <img id="image" src="">
+            <button class="button" id="go">Go</button>
+        </div>
+        
+        <div class="overlay" id="overlay3"></div>
+        <div class="popup" id="popup2">
+        <p>Pas de résultat</p>
+        </div>
+
+        <div class="overlay" id="overlay4"></div>
         <div class="popup" id="popup">
         <p>Redirection en cours...</p>
         </div>
-        <div>
-            <title id=""></title>
-            <price id=""></price>
-            <img src="">
-        </div>
+        
        
 
         <script src="popup.js"></script>
