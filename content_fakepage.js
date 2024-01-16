@@ -1,31 +1,34 @@
-// // background need to send me the data object with title, img and price.
+browser.runtime.onMessage.addListener((request)=> {
+  if(request.message === "newPTP" && request.data){
+      let thisTitle = document.getElementsByClassName("titre");
+      let thisAuthor = document.querySelector("auteur");
+      let thisImage = document.querySelector("image");
+      let thisPrice = document.querySelector("price");
+  }
+})
 
-// let thisTitle = document.getElementsByClassName("titre");
-// let thisImage = document.querySelector("img.couverture");
-// let thisPrice = document.querySelector(`[itemprop="offers"]`);
-// console.log("title :", thisTitle.innerText);
-// console.log("image :", thisImage.src);
-// console.log("price :", thisPrice.innerText);
+console.log("title :", thisTitle);
+console.log("author :", thisAuthor);
+console.log("image :", thisImage);
+console.log("price :", thisPrice);
+thisTitle.innerText = `${title}`
+thisAuthor.innerText = `${author}`
+thisImage.src = `${url}`
+thisPrice.innerText = `${price}`
 
-// //this works only if the fake page information is organize as in amazon.com
-// // thisTitle.innerText = thisTitle[0].innerText;
-// // thisImage.src = thisImage.src;
-// // thisPrice.innerHTML = thisPrice.innerText;
+const objectTest = {
+  author: "Aristote",
+  image: "https://m.media-amazon.com/images/I/41M2M2+AthL._SY445_SX342_.jpg",
+  price: "70 €",
+  title: "Oeuvres Complètes",
+};
 
-// thisTitle.innerText = "Hello World";
-// thisImage.src =
-//   "https://m.media-amazon.com/images/I/31lL4h9km4L._SY445_SX342_.jpg";
-// // thisTitle.innerText = thisTitle[0].innerText;
-// // thisImage.src = thisImage.src;
-// // thisPrice.innerHTML = thisPrice.innerText;
-
-// const cart = () => {
-//   alert("you clicked on the button class");
-//   console;log("tralala")
-// };
-
-// const btn = document.getElementById("header-cart-link").addEventListener("click", cart);
-// const btn = document.getElementsByClassName("btn btn-brand-2 btAddToCart").addEventListener("click", cart);
-
-
+document.getElementById("header-cart-link").addEventListener("click", function() {
+  PTP = [thisTitle, thisImage, thisPrice]
+  console.log(PTP)
+  chrome.runtime.sendMessage({
+    message: "cartClicked"
+  });
+  window.open('some.html', 'win', 'width=400,height=400')
+});
 
