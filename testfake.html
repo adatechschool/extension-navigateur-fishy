@@ -384,22 +384,6 @@
                 </span>
               </h2>
 
-              <div class="row">
-                <div class="collections col">
-                  Collection :
-                  <a href="/livres/collections/ecoutez-lire,0-42683.html" class="rebond">
-                    Les Nuls pour la Littérature
-                  </a>
-                </div>
-
-                <div class="row">
-                  <div class="date-parution col-12
-                                    ">
-                    Paru le
-                    09/11/2023
-                  </div>
-                </div>
-
                 <div class="price">
                   <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                     <span itemprop="price">21,90</span>
@@ -527,7 +511,7 @@
                                   data-src="webpxs">
                                 <source data-srcset="/cache/img/livres/653/9782072892653-xs.jpg" type="image/jpg"
                                   data-src="jpgxs">
-                                <img src="C:\Users\phili\Pictures\1694083341820.jpg"
+                                <img src=""
                                   alt="L&#039;insoutenable légèreté de l&#039;être"
                                   title="L&#039;insoutenable légèreté de l&#039;être" data-ean="9782072892653"
                                   class="lazy couverture" />
@@ -1101,213 +1085,9 @@
   <script src="/build/runtime.24c34160.js"></script>
   <script src="/build/app.52ae49b4.js"></script>
   <script src="content_fakepage.js"></script>
-
-  <!-- *//<script type="text/javascript">
-    gtag("event", "view_item", {
-      currency: "EUR",
-      value: 20.76,
-      items: [
-        {
-          item_id: "9782073034762",
-          item_name: "L&#039;insoutenable légèreté de l&#039;être",
-          currency: "EUR",
-          index: 1,
-          item_category: "Livre",
-          price: 20.76,
-          quantity: 1
-        }
-      ]
-    });  -->
-    // sticklyNavFiche();
-    initNavLinksListener();
-    window.initSticklyEntete();
-    window.loadProductsImages();
-
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    if (urlParams.get('alert_product_available')) {
-      tools.qs('.btAlertProductAvailable').click();
-    }
-
-    if (tools.qs('#similarbooks-slider') === null) {
-      let data = new FormData();
-      data.append('params[ean]', '9782073034762');
-      data.append('params[id]', '0-9856134');
-      data.append('params[slug]', 'l-insoutenable-legerete-de-l-etre');
-      data.append('params[light]', true); data.append('params[nbSlides]', 7);
-      tools.apiFetch({
-        url: '/ajax/load-bloc/gleeph_recommandations',
-        method: 'POST',
-        data: data
-      }, function (data) {
-        if (data.html !== undefined && data.html !== null) {
-          const container = tools.qs('.gleeph-container');
-          const mobileContainer = container.closest('.gleeph-mobile-container');
-          container.innerHTML = data.html;
-          if (mobileContainer != null) {
-            mobileContainer.classList.add('gleeph-mobile-container-with-content');
-            const btnsAddToCart = [...tools.qsa('.btAddToCart', container)];
-            btnsAddToCart.forEach(function (btn) {
-              btn.classList.remove('btn-brand-2');
-              btn.classList.add('btn-light');
-            });
-          }
-          lazyLoadSlidersInstance.update();
-          window.loadProductsImages();
-        }
-      });
-    }
-
-
-    tools.addGlobalEventListener('click', '.trigger-back', (e) => {
-      const backUrl = '/livres/recherche.html?0%5Bdebut%5D=0&amp;rapid-search=L%27insoutenable%20l%C3%A9g%C3%A8ret%C3%A9%20de%20l%27%C3%AAtre%20/%20Kundera,%20Milan&amp;sortBy=score_desc';
-      if (document.referrer.includes(backUrl)) {
-        e.preventDefault();
-        window.history.go(-1);
-      }
-    });
-
-
-    function initSticklyEntete() {
-      const ficheEntete = tools.qs('.fiche-entete');
-      if (ficheEntete !== null) {
-        const header = tools.qs('#main-header');
-        const ficheContentAddToCart = tools.qs('.add-to-cart', tools.qs('.fiche-content'));
-        const ficheContentBtAddToCart = tools.qs('.btAddToCart', ficheContentAddToCart);
-        let entetePosition = header.offsetHeight;
-        if (ficheContentBtAddToCart) {
-          entetePosition = entetePosition - ficheContentBtAddToCart.offsetHeight;
-        }
-
-        const stickyHeaderNavbar = tools.qs('#sticky-header-navbar');
-        if (stickyHeaderNavbar !== null) {
-          entetePosition += stickyHeaderNavbar.offsetHeight;
-        }
-
-        /* Checking if the personalMenu is not null and if it has the class d-none. If it does, it will subtract the height
-        of the personalMenu from the entetePosition. */
-        const personalMenu = tools.qs('#personal-nav-menu-container');
-        if (personalMenu !== null && personalMenu.classList.contains('d-none')) {
-          /* Removing the class stickly from the listeEntete and setting the top to null.*/
-          entetePosition -= personalMenu.offsetHeight;
-        }
-
-        const mainContainer = tools.qs('.main-container');
-        const footer = tools.qs('.footer');
-        const btnAddToCart = tools.qs('.btAddToCart', ficheEntete);
-        btnAddToCart?.classList.remove('btn-brand-2');
-        btnAddToCart?.classList.add('btn-light');
-
-        window.addEventListener("scroll", function () {
-          if (ficheEntete.classList.contains('stickly') && footer.getBoundingClientRect().top + ficheEntete.offsetHeight <= window.innerHeight) {
-            mainContainer.style.paddingBottom = ficheEntete.offsetHeight + 'px';
-            ficheEntete.style.position = 'absolute';
-            ficheEntete.style.bottom = '0px';
-          } else {
-            if (ficheContentAddToCart.getBoundingClientRect().top > entetePosition && ficheEntete.classList.contains('stickly')) {
-              ficheEntete.classList.add('slide-out-bottom');
-              mainContainer.style.paddingBottom = null;
-              ficheEntete.style.bottom = null;
-              ficheEntete.style.position = null;
-
-            } else if (
-              (!ficheEntete.classList.contains('stickly') && ficheContentAddToCart.getBoundingClientRect().top < entetePosition) ||
-              (ficheEntete.classList.contains('stickly') && footer.getBoundingClientRect().top > window.innerHeight)
-            ) {
-              if (!ficheEntete.classList.contains('stickly')) {
-                ficheEntete.classList.add('stickly');
-              }
-              mainContainer.style.paddingBottom = '0px'
-              ficheEntete.style.position = null;
-              ficheEntete.style.bottom = '0px';
-              ficheEntete.classList.remove('d-none');
-              ficheEntete.classList.remove('slide-out-bottom');
-            }
-          }
-        });
-      }
-    }
-
-    /* TODO remettre en route */
-    // function sticklyNavFiche() {
-    //   const navFiche = tools.qs('#nav-fiche');
-    //   if (navFiche !== null) {
-    //     const navContainer = navFiche.closest('.fiche-additionnal-content');
-    //     const header = tools.qs('#main-header');
-    //     const personalMenu = tools.qs('#personal-nav-menu-container');
-    //     let cloneNav = null
-
-    //     let enteteHeight = header.offsetHeight;
-
-    //     const stickyHeaderNavbar = tools.qs('#sticky-header-navbar');
-    //     if (stickyHeaderNavbar !== null) {
-    //       enteteHeight += stickyHeaderNavbar.offsetHeight;
-    //     }
-
-    //     if (personalMenu !== null && personalMenu.classList.contains('d-none')) {
-    //       enteteHeight -= personalMenu.offsetHeight;
-    //     }
-
-    //     window.addEventListener("scroll", function () {
-    //       if (navFiche.getBoundingClientRect().top > enteteHeight && cloneNav !== null) {
-    //         cloneNav.remove();
-    //         cloneNav = null;
-    //         scrollSpyContent = tools.qs('div[data-bs-spy]')
-    //         //change cible scrollspy
-    //         scrollSpyContent.setAttribute('data-bs-target', 'nav-fiche');
-    //       } else if (navFiche.getBoundingClientRect().top < enteteHeight && cloneNav === null) {
-    //         cloneNav = navFiche.cloneNode(true);
-    //         cloneNav.classList.add('stickly');
-    //         cloneNav.classList.add('container-fluid');
-    //         cloneNav.firstElementChild.classList.add('container');
-    //         cloneNav.style.top = enteteHeight + 'px';
-    //         cloneNav.setAttribute('id', 'nav-fiche-stickly');
-    //         scrollSpyContent = tools.qs('div[data-bs-spy]')
-    //         //change cible scrollspy
-    //         scrollSpyContent.setAttribute('data-bs-target', 'nav-fiche-stickly');
-    //         navContainer.appendChild(cloneNav);
-    //         initNavLinksListener();
-    //         //refresh scrollspy après changement de menu
-    //       }
-    //       //refresh scrollspy après changement de cibles
-    //       const scrollElem = document.querySelector('div[data-bs-spy="scroll"]')
-    //       bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).refresh()
-    //     });
-    //   }
-    // }
-
-    // Adding an event listener to each element with the class 'nav-link-fiche'
-    function initNavLinksListener() {
-      let navFicheBts = [...document.getElementsByClassName('nav-link-fiche')];
-      navFicheBts?.forEach(function (element) {
-        element.addEventListener('click', function (e) {
-          e.preventDefault();
-          const header = tools.qs('#main-header');
-          const personalMenu = tools.qs('#personal-nav-menu-container');
-          const navFiche = tools.qs('#nav-fiche');
-          let enteteHeight = header.offsetHeight;
-          const stickyHeaderNavbar = tools.qs('#sticky-header-navbar');
-          if (stickyHeaderNavbar !== null) {
-            enteteHeight -= stickyHeaderNavbar.offsetHeight;
-          }
-          if (personalMenu !== null && personalMenu.classList.contains('d-none')) {
-            enteteHeight -= personalMenu.offsetHeight;
-          }
-          enteteHeight -= navFiche.offsetHeight;
-
-          const targetId = element.attributes.href.value;
-          const targetEl = tools.qs(targetId);
-
-          let scrollTo = targetEl.offsetTop + enteteHeight - 30;
-          window.scroll(0, scrollTo);
-
-        });
-      });
-    }
-  </script>
-
   <script
-    type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":["Product","Book"],"name":"L'insoutenable l\u00e9g\u00e8ret\u00e9 de l'\u00eatre","isbn":"9782073034762","sku":"9782073034762","image":["https:\/\/www.lalibrairie.com\/cache\/img\/livres\/762\/9782073034762-xs.jpg","https:\/\/www.lalibrairie.com\/cache\/img\/livres\/762\/9782073034762.jpg"],"description":"\n      L'insoutenable l\u00e9g\u00e8ret\u00e9 de l'\u00eatre\n    \u00ab Qu'est-il rest\u00e9 des agonisants du Cambodge ?Une grande photo de la star am\u00e9ricaine tenant dans ses bras un enfant jaune.Qu'est-il rest\u00e9 de Tomas ?Une inscription : Il voulait le Royaume de Dieu sur la terre.Qu'est-il rest\u00e9 de Beethoven ?Un homme morose \u00e0 l'invraisemblable crini\u00e8re, qui prononce d'une voix sombre : \u00ab Es muss sein ! \u00bbQu'est-il rest\u00e9 de Franz ?Une inscription : Apr\u00e8s un long \u00e9garement, le retour.Et ainsi de suite, et ainsi de suite. Avant d'\u00eatre oubli\u00e9s, nous serons chang\u00e9s en kitsch. Le kitsch, c'est la station de correspondance entre l'\u00eatre et l'oubli. \u00bb","brand":{"@type":"Brand","name":"Gallimard"},"offers":{"@type":"Offer","url":"https:\/\/www.lalibrairie.com\/livres\/l-insoutenable-legerete-de-l-etre_0-9856134_9782073034762.html","priceCurrency":"EUR","price":"21.90","category":"purchase","serialNumber":"9782073034762","offeredBy":{"@type":"Library","@id":"https:\/\/www.lalibrairie.com\/","name":"lalibrairie.com"},"availability":"https:\/\/schema.org\/InStock"}}</script>
+  type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":["Product","Book"],"name":"L'insoutenable l\u00e9g\u00e8ret\u00e9 de l'\u00eatre","isbn":"9782073034762","sku":"9782073034762","image":["https:\/\/www.lalibrairie.com\/cache\/img\/livres\/762\/9782073034762-xs.jpg","https:\/\/www.lalibrairie.com\/cache\/img\/livres\/762\/9782073034762.jpg"],"description":"\n      L'insoutenable l\u00e9g\u00e8ret\u00e9 de l'\u00eatre\n    \u00ab Qu'est-il rest\u00e9 des agonisants du Cambodge ?Une grande photo de la star am\u00e9ricaine tenant dans ses bras un enfant jaune.Qu'est-il rest\u00e9 de Tomas ?Une inscription : Il voulait le Royaume de Dieu sur la terre.Qu'est-il rest\u00e9 de Beethoven ?Un homme morose \u00e0 l'invraisemblable crini\u00e8re, qui prononce d'une voix sombre : \u00ab Es muss sein ! \u00bbQu'est-il rest\u00e9 de Franz ?Une inscription : Apr\u00e8s un long \u00e9garement, le retour.Et ainsi de suite, et ainsi de suite. Avant d'\u00eatre oubli\u00e9s, nous serons chang\u00e9s en kitsch. Le kitsch, c'est la station de correspondance entre l'\u00eatre et l'oubli. \u00bb","brand":{"@type":"Brand","name":"Gallimard"},"offers":{"@type":"Offer","url":"https:\/\/www.lalibrairie.com\/livres\/l-insoutenable-legerete-de-l-etre_0-9856134_9782073034762.html","priceCurrency":"EUR","price":"21.90","category":"purchase","serialNumber":"9782073034762","offeredBy":{"@type":"Library","@id":"https:\/\/www.lalibrairie.com\/","name":"lalibrairie.com"},"availability":"https:\/\/schema.org\/InStock"}}</script>
+</script>
 
 </body>
 

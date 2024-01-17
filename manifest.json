@@ -11,12 +11,17 @@
   "background": {
     "service_worker": "background.js"
   },
+
+  "externally_connectable": {
+    "matches": ["file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/datapage.html"]
+  },
+  
   "content_scripts": [
     {
       "matches": [
-        "https://www.amazon.com/*",
         "https://www.amazon.fr/*",
-        "https://www.lalibrairie.com/livres/*"
+        "https://www.lalibrairie.com/livres/*",
+        "file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/testfake.html"
       ],
       "js": ["content_page.js", "content_fakepage.js"]
     }
