@@ -1,72 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-    <title>Fishy</title>
-    <style>
-        .overlay {
-            font-family: arial black ;
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 192, 203, 0.655);
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            margin-left: 77%;
-            margin-top: -10%;
-            height: 150%;
-            width: 150%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: rgb(229, 192, 255);
-            z-index: 1000;
-            font-family: arial black;
-            font-size: 130%;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <title>Fishy</title>
+  <hr />
+  <header class="header">Search Reduction</header>
 
-        .button {
-            margin-left: 20%;
-            background-color: rgb(229, 192, 255);
-            border: #fff;
-            font-family: arial black ;
-            font-size: 145%;
-            height: 50px;
-            width: 60%;
-            
-        }
-        .button:hover {
-            background-color: rgb(39, 152, 197);
-        }
-        h1 {
-            text-align:center;
-            font-family: Tahoma, Arial, sans-serif;
-            color: black;
-            margin: 200px 200px;
-        }
-       
+  <body class="body">
+   
+    <p>Cliquez ici pour rechercher ce produit sur d'autres plate-formes de vente :</p>
+    <hr />
 
-    </style>
-    <body>
-        <h1></h1>
-        <button class="button" id="search">Rechercher</button>
-        <div class="overlay" id="overlay"></div>
-        <div class="popup" id="popup">
+    <button class="button" id="search">Rechercher</button>
+
+    <div class="overlay1" id="overlay1">
+      <div id="title"></div>
+      <div id="author"></div>
+      <img id="image" />
+      <div id="oldPrice"></div>
+      <div id="discountPercentage"></div>
+      <div id="newPrice"></div>
+      <button class="button" id="go">Go</button>
+    </div>
+
+    <div class="overlay1" id="overlay2">
+      <div id="nothing">
+        Nous n'avons pas trouvé de résultat. Cela peut être dû à un problème de
+        serveur. Veuillez rafraîchir la page, puis réessayer.
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay3">
+      <div class="popup" id="popup">
         <p>Redirection en cours...</p>
-        </div>
-        <div>
-            <title id=""></title>
-            <price id=""></price>
-            <img src="">
-        </div>
-       
+      </div>
+    </div>
 
-        <script src="popup.js"></script>
-    </body>
+    <div class="overlay" id="overlay4"></div>
+
+    <script src="popup.js"></script>
+  </body>
+  
 </html>
