@@ -1,12 +1,11 @@
-chrome.webNavigation.onCompleted.addListener(function() {
+chrome.webNavigation.onCompleted.addListener(function () {
   RNGInit();
 });
 
 //SCAN RESULT
-
 let PTP;
 
-chrome.runtime.onMessage.addListener(request => {
+chrome.runtime.onMessage.addListener((request) => {
   console.log("there :", request.message === "scanPositive" && request.data);
   if (request.message === "scanPositive" && request.data) {
     console.log("RNGInitResult :", RNGInitResult);
@@ -17,16 +16,16 @@ chrome.runtime.onMessage.addListener(request => {
   } else {
     console.log("RNG not passed");
     chrome.runtime.sendMessage({
-      message: "noPTP"
+      message: "noPTP",
     });
   }
 });
 
-chrome.runtime.onMessage.addListener(request => {
+chrome.runtime.onMessage.addListener((request) => {
   if (request.message === "givePTP") {
     chrome.runtime.sendMessage({
       message: "sendPTP",
-      data: PTP
+      data: PTP,
     });
   }
 });
@@ -43,28 +42,21 @@ chrome.runtime.onMessage.addListener(request => {
 
 //FPAGE LOADED
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.greeting === "searchFPage") {
     sendResponse({ farewell: "initFPage" });
   }
-}); //DATA RECEPTION
+});
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+//DATA RECEPTION
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "saveToDatabase") {
     saveData(request.data);
   }
 });
 
-
-chrome.runtime.onMessage.addListener(function(request) {
-
-  
-})
-
 const RNGInit = () => {
   return Math.random();
 };
-
 let RNGInitResult = RNGInit();
-
-

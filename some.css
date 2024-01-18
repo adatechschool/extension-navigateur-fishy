@@ -87,6 +87,7 @@ body {
 
 .image {
   margin-right: 50px;
+
 }
 
 .description {
@@ -226,3 +227,29 @@ input:focus {
 .button-22:active {
   background-color: #7aa39f;
 }
+
+.titre { 
+  position: relative;
+  left: 20%;
+  top: 20px; 
+  font-size: 130%;
+  text-align: center;
+  padding-top: 0px; 
+  margin-right: 125px;;
+  font-weight: bold;
+}
+
+
+.Author {
+  padding-top: 25px;
+margin-left: 125px;
+margin-right: 125px;
+
+}
+
+.total-price {
+  padding-top: 50px;
+  margin-left: 75px;
+margin-right: 75px;
+}
+

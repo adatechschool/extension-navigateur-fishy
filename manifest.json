@@ -3,27 +3,42 @@
   "name": "Search Reduction",
   "version": "1.0",
   "description": "Help you find what you want and buy it at the best price !",
-  "permissions": ["scripting", "tabs", "webNavigation"],
+  "permissions": ["scripting", "tabs", "webNavigation", "activeTabs"],
   "action": {
     "default_title": "Click Me",
     "default_popup": "popup.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "newBackground.js"
   },
 
   "externally_connectable": {
-    "matches": ["file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/datapage.html"]
+    "matches": [
+      "file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/datapage.html"
+    ]
   },
-  
   "content_scripts": [
     {
+      "matches": ["https://www.amazon.fr/*"],
+      "js": ["content_page.js"]
+    },
+    {
       "matches": [
-        "https://www.amazon.fr/*",
-        "https://www.lalibrairie.com/livres/*",
         "file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/testfake.html"
       ],
-      "js": ["content_page.js", "content_fakepage.js"]
+      "js": ["content_fakepage.js"]
+    },
+    {
+      "matches": [
+        "file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/some.html"
+      ],
+      "js": ["some.js"]
+    },
+    {
+      "matches": [
+        "file:///D:/Users/Philippe/Ada%20Tech%20School/Code/Projets/Janvier/Fishy/datapage.html"
+      ],
+      "js": ["datapage.js"]
     }
   ]
 }
