@@ -30,11 +30,11 @@ button.addEventListener("click", function() {
   console.log(personalInfo);
   console.log(cardInfo);
 
-  chrome.runtime.sendMessage(("background") {
-    message: "cstdata",
-    data1: personalInfo,
-    data2 : cardInfo
-  });
+//   chrome.runtime.sendMessage(("background") {
+//     message: "cstdata",
+//     data1: personalInfo,
+//     data2 : cardInfo
+//   });
 
-  window.open("https://www.youraddress.com", "_self");
+//   window.open("https://www.youraddress.com", "_self");
 })
